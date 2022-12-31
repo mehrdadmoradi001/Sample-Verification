@@ -47,15 +47,7 @@ class Application extends StatelessWidget {
                 focusNode: focus1,
                 controller: textEditingController1,
                 onChanged: (value) {
-
-                  if(value.length==4){
-                    var nums = value.split('');
-                    textEditingController1.text= nums[0];
-                    textEditingController2.text= nums[1];
-                    textEditingController3.text= nums[2];
-                    textEditingController4.text= nums[3];
-                  }
-
+                  _getCheckValue(value);
                   value.length == 1 ? FocusScope.of(context).nextFocus() : value
                       .isEmpty ? FocusScope.of(context).requestFocus(focus1) : null;
                 },
@@ -69,6 +61,7 @@ class Application extends StatelessWidget {
                 focusNode: focus2,
                 controller: textEditingController2,
                 onChanged: (value) {
+                  _getCheckValue(value);
                   value.length == 1 ? FocusScope.of(context).nextFocus() : value
                       .isEmpty ? FocusScope.of(context).previousFocus() : null;
                 },
@@ -82,6 +75,7 @@ class Application extends StatelessWidget {
                 focusNode: focus3,
                 controller: textEditingController3,
                 onChanged: (value) {
+                  _getCheckValue(value);
                   value.length == 1 ? FocusScope.of(context).nextFocus() : value
                       .isEmpty ? FocusScope.of(context).previousFocus() : null;
                 },
@@ -95,6 +89,7 @@ class Application extends StatelessWidget {
                 focusNode: focus4,
                 controller: textEditingController4,
                 onChanged: (value) {
+                  _getCheckValue(value);
                   value.length == 1 ? FocusScope.of(context).unfocus() : value
                       .isEmpty ? FocusScope.of(context).previousFocus() : null;
                 },
@@ -107,4 +102,15 @@ class Application extends StatelessWidget {
       ),
     );
   }
+
+  _getCheckValue(String value){
+    if(value.length==4){
+      var nums = value.split('');
+      textEditingController1.text= nums[0];
+      textEditingController2.text= nums[1];
+      textEditingController3.text= nums[2];
+      textEditingController4.text= nums[3];
+    }
+  }
+
 }
